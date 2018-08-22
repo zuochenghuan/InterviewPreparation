@@ -1,0 +1,61 @@
+@import './_reset.less';
+@import './_mixin.less';
+@import './_animation.less';
+
+a{
+    float: left;
+    display: block;
+    margin: 0.05rem 0.1rem;
+}
+.btn-music {
+    position: relative;
+    overflow: hidden;
+    &.playing {
+        i {
+            animation: music 1s linear infinite;
+        }
+    }
+}
+.music-graph {
+    width: 100%;
+    & > i {
+        color: #f8fabb;
+        border-color: #f8fabb;
+        float: left;
+        width: 0;
+        border-left: .02rem solid;
+        height: .34rem;
+        margin-right: 2px;
+        .transition(all .2s ease-out);
+        .transform-origin(50%, 100%);
+        &:nth-child(1) {
+            .transform(scaleY(.3));
+            .animation-delay(0);
+        }
+        &:nth-child(2) {
+            .transform(scaleY(.9));
+            .animation-delay(-.5s);
+        }
+        &:nth-child(3) {
+            .transform(scaleY(.5));
+            .animation-delay(-.3s);
+        }
+        &:nth-child(4) {
+            .transform(scaleY(.7));
+            .animation-delay(-.7s);
+        }
+        &:nth-child(5) {
+            .transform(scaleY(.3));
+            .animation-delay(-.5s);
+        }
+    }
+}
+
+// 音乐播放器每个竖条的动画
+@keyframes music{
+    0%, 100% { .transform(scale(1)); }
+    20% { .transform(scaleY(.5)); }
+    40% { .transform(scaleY(.7)); }
+    60% { .transform(scaleY(.3)); }
+    80% { .transform(scaleY(.6)); }
+};
